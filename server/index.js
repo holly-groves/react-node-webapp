@@ -20,6 +20,7 @@ app.post("/message",  (req, res) => {
 
     // Validate the request JSON
     if (!messageText) {
+        console.log("Error: Incorrect JSON format -> Check message exists and is not empty")
         res.send("Error: Incorrect JSON format -> Check message exists and is not empty")
     } else {
         msgs.push(messageText); // Adds the new message to the msgs array
@@ -28,7 +29,12 @@ app.post("/message",  (req, res) => {
         console.log(messageText);
         res.json({"Message Recieved" : messageText});
     }
-})
+});
+
+// GET endpoint to get a test string
+app.get("/getMessages", (req, res) => {
+    res.json(msgs);
+});
 
 
 app.listen(PORT, () => {
