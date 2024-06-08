@@ -10,25 +10,27 @@ function App() {
     fetchMessages();
   }, []);
 
+  // Fetches the messages stored in the backend
   const fetchMessages = async () => {
     try {
-      const res = await axios.get('/getMessages');
+      const res = await axios.get('/getMessages'); // GET api call
       setMessages(res.data);
     } catch (e) {
       console.error("Error: fetchMessages -> ", e);
     }
   };
 
+  // Adds the message submitted to the messages stored in the backend
   const newSubmission = async (subEvent) => {
     subEvent.preventDefault()
     try {
-      const response = await axios.post('/message', {message: newMsg});
+      const response = await axios.post('/message', {message: newMsg}); // POST api call
       setMessages([...messages, response.data.message]);
       setNewMessage('');
     } catch (e) {
       console.error("Error: newSubmission -> error submitting message", e);
     }
-    fetchMessages();
+    fetchMessages(); // Updates the list of messages
 
   };
 
