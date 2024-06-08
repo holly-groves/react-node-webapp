@@ -6,12 +6,6 @@ function App() {
   const [messages, setMessages] = React.useState([]);
   const [newMsg, setNewMessage] = useState('');
 
-  // React.useEffect(() => {
-  //   fetch("/api")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
-
   React.useEffect(() => {
     fetchMessages();
   }, []);
@@ -26,9 +20,16 @@ function App() {
   };
 
   const newSubmission = async (subEvent) => {
-    const response = await axios.post('message', {text: newMsg});
-    setMessages([...messages, response.data]);
-    setNewMessage('');
+    subEvent.preventDefault()
+    try {
+      const response = await axios.post('/message', {message: newMsg});
+      setMessages([...messages, response.data.message]);
+      setNewMessage('');
+    } catch (e) {
+      console.error("Error: newSubmission -> error submitting message", e);
+    }
+    fetchMessages();
+
   };
 
   return (
