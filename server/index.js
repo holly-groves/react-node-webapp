@@ -20,6 +20,7 @@ app.post("/message",  (req, res) => {
 
     // Validate the request JSON
     if (!messageText) {
+        console.log("Error: Incorrect JSON format -> Check message exists and is not empty")
         res.send("Error: Incorrect JSON format -> Check message exists and is not empty")
     } else {
         msgs.push(messageText); // Adds the new message to the msgs array
