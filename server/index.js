@@ -28,7 +28,12 @@ app.post("/message",  (req, res) => {
         console.log(messageText);
         res.json({"Message Recieved" : messageText});
     }
-})
+});
+
+// GET endpoint to get a test string
+app.get("/getMessages", (req, res) => {
+    res.json(msgs);
+});
 
 
 app.listen(PORT, () => {
