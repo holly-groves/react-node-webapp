@@ -35,7 +35,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Add a new message</h2>
+        <h1>Message Board</h1>
+        <h2>Add a new message below</h2>
         <form onSubmit={newSubmission}>
           <input
             type="text"
@@ -44,12 +45,12 @@ function App() {
             placeholder="Enter message here"/>
           <button type="submit">Submit</button>
         </form>
-        <h2>See Messages Here!</h2>
-        <ul style ={{listStyle:'none'}}>
+        <h2>Messages</h2>
+        <p>
           {messages.map(message => (
-            <li>{message}</li>
+            <p>{message}</p>
           ))}
-        </ul>
+        </p>
       </header>
     </div>
   );
