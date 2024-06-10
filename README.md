@@ -6,3 +6,5 @@ This project is a React/Node.js and Express webapp that acts as a message board,
 
 * Frontend - React
 * Backend - Node.js
+
+For instructions on how to setup the application and the guide on how to use the application & interact with the app via Postman, refer to the "Simple Message Board How To" document.
